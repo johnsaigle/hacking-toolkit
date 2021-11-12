@@ -15,4 +15,4 @@ if (! -e $file) {
 
 my $ports = qq/80,443,3000,4080,4443,5000,8000,8080,8443,9000/;
 my $out = join('_', 'nmap', qx/date +%Y-%m-%d/, '.txt');
-say qx/nmap -p $ports -sC -sV --open -iL $file -oN $out/;
+say qx/nmap -p $ports -sV --open -iL $file -oN $out/;
