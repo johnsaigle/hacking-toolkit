@@ -14,3 +14,6 @@ use warnings;
 use strict;
 use v5.34; # You may need to update this over time or change for the OS
 
+# Parse an argument from the command line
+# my $arg = shift;
+# die "Supply a <value>\n" if not defined $arg or length $arg == 0;
