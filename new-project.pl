@@ -10,7 +10,7 @@ my @dirs = <nmap gobuster>;
 my @files = <notes.md scope.txt>;
 
 my $name = shift;
-die "Supply a name for the target" if not defined $name or length $name == 0;
+die "Supply a name for the target\n" if not defined $name or length $name == 0;
 my $path = "~/bb/$name"; # OS cmd injection. Don't deploy online or run with root.
 foreach (@dirs) {
 	`mkdir -p $path/$_`;
