@@ -3,7 +3,7 @@
 set -e
 
 apt update -y && apt upgrade -y
-apt install curl git sudo zip exiftool tmux python3-pip -y
+apt install curl git sudo zip exiftool tmux python3-pip vim -y
 
 # Install Go
 cd /tmp/
@@ -13,13 +13,13 @@ sudo chown -R root:root ./go
 sudo mv go /usr/local
 rm go1.17.4.linux-amd64.tar.gz
 cd
-echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.profile
+echo 'export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin' >> ~/.profile
 source ~/.profile
 
 # Install go tools
 go get -v github.com/OWASP/Amass/v3/...
-go get -u github.com/ffuf/ffuf
-go get -u github.com/tomnomnom/meg
+go install github.com/ffuf/ffuf@latest
+go install github.com/tomnomnom/meg@latest
 
 python3 -m pip install trufflehog3
 
