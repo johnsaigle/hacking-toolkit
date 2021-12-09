@@ -3,9 +3,17 @@
 set -e
 
 apt update -y && apt upgrade -y
-apt install sudo
-apt install git
+apt install curl git sudo zip exiftool
 apt install python3-pip -y
+
+cd /tmp/
+curl -L -O https://go.dev/dl/go1.17.4.linux-amd64.tar.gz
+tar -xvf go1.17.4.linux-amd64.tar.gz
+sudo chown -R root:root ./go
+sudo mv go /usr/local
+rm go1.17.4.linux-amd64.tar.gz
+cd
+echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.profile
 
 pip install trufflehog3
 
