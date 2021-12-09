@@ -3,7 +3,7 @@
 set -e
 
 apt update -y && apt upgrade -y
-apt install curl git sudo zip exiftool python3-pip -y
+apt install curl git sudo zip exiftool tmux python3-pip -y
 
 cd /tmp/
 curl -L -O https://go.dev/dl/go1.17.4.linux-amd64.tar.gz
@@ -14,7 +14,7 @@ rm go1.17.4.linux-amd64.tar.gz
 cd
 echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.profile
 
-pip install trufflehog3
+python3 -m pip install trufflehog3
 
 # Install golang via Google repo instead. The apt version seems broken (doesn't
 # support all operation modes).
