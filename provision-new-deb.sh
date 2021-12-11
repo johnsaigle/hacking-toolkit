@@ -3,7 +3,7 @@
 set -e
 
 apt update -y && apt upgrade -y
-apt install curl git sudo zip exiftool tmux python3-pip vim -y
+apt install curl git sudo zip exiftool tmux python3-pip vim zsh -y
 
 # Install Go
 cd /tmp/
@@ -20,6 +20,7 @@ source ~/.profile
 go get -v github.com/OWASP/Amass/v3/...
 go install github.com/ffuf/ffuf@latest
 go install github.com/tomnomnom/meg@latest
+go install github.com/tomnomnom/httprobe@latest
 
 python3 -m pip install trufflehog3
 
