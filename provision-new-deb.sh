@@ -34,3 +34,20 @@ git clone https://github.com/sqlmapproject/sqlmap.git
 mkdir -p /usr/share/wordlists/
 cd /usr/share/wordlists/
 git clone https://github.com/danielmiessler/SecLists.git
+
+# vim and tmux settings
+cd
+curl -O https://raw.githubusercontent.com/johnsaigle/rcs/master/.tmux.conf
+curl -O https://raw.githubusercontent.com/johnsaigle/rcs/master/.vimrc
+
+# Install Oh my Zsh
+sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
+sed -i 's/robbyrussell/ys/g' ~/.zshrc # change theme to 'ys'
+source ~/.zshrc
+
+# Create new SSH key for github access
+KEY_FILE=$HOME/.ssh/github
+echo 'Creating new SSH key...'
+ssh-keygen -t ecdsa -C '' -f $KEY_FILE
+eval $(ssh-agent)
+ssh-add $KEY_FILE
