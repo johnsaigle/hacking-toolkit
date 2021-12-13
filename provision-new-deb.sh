@@ -29,6 +29,7 @@ python3 -m pip install trufflehog3
 
 cd /opt/
 git clone https://github.com/sqlmapproject/sqlmap.git
+git clone https://github.com/johnsaigle/hacking-toolkit
 
 # Wordlists
 mkdir -p /usr/share/wordlists/
@@ -51,3 +52,10 @@ echo 'Creating new SSH key...'
 ssh-keygen -t ecdsa -C '' -f $KEY_FILE
 eval $(ssh-agent)
 ssh-add $KEY_FILE
+
+cat > $HOME/.ssh/config<< EOF
+Host github.com
+    HostName github.com
+    User git
+    IdentityFile ~/.ssh/github
+EOF
