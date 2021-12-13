@@ -13,7 +13,14 @@ sudo chown -R root:root ./go
 sudo mv go /usr/local
 rm go1.17.4.linux-amd64.tar.gz
 cd
-echo 'export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin' >> ~/.profile
+echo 'export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin' >> $HOME/.profile
+
+# Use vim as default editor
+cat >> $HOME/.profile<< EOF
+EDITOR=vim
+VISUAL=$EDITOR
+export EDITOR VISUAL
+EOF
 source ~/.profile
 
 # Install go tools
