@@ -3,14 +3,24 @@
 set -e
 
 apt update -y && apt upgrade -y
+# THe following packages allow apt to communicate over HTTPS
+apt install apt-transport-https ca-certificates curl gnupg2 software-properties-common -y
+# Get software
 apt install curl git sudo zip exiftool tmux python3-pip vim zsh -y
+
+# Add docker files to apt repository
+# https://www.linuxshelltips.com/install-docker-in-debian/
+curl -fsSL https://download.docker.com/linux/debian/gpg | gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/debian $(lsb_release -cs) stable" | tee /etc/apt/sources.list.d/docker.list > /dev/null
+apt update
+apt -y install docker-ce docker-ce-cli containerd.io
 
 # Install Go
 cd /tmp/
 curl -L -O https://go.dev/dl/go1.17.4.linux-amd64.tar.gz
 tar -xvf go1.17.4.linux-amd64.tar.gz
-sudo chown -R root:root ./go
-sudo mv go /usr/local
+chown -R root:root ./go
+mv go /usr/local
 rm go1.17.4.linux-amd64.tar.gz
 cd
 echo 'export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin' >> $HOME/.profile
