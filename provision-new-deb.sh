@@ -6,7 +6,7 @@ apt update -y && apt upgrade -y
 # THe following packages allow apt to communicate over HTTPS
 apt install apt-transport-https ca-certificates curl gnupg2 software-properties-common -y
 # Get software
-apt install curl git nmap sudo zip exiftool tmux python3-pip vim whois zsh -y
+apt install build-essential curl exiftool git make nmap python3-pip sudo tmux vim whois zip zsh -y
 
 # Add docker files to apt repository
 # https://www.linuxshelltips.com/install-docker-in-debian/
@@ -81,3 +81,6 @@ Host github.com
     User git
     IdentityFile ~/.ssh/github
 EOF
+
+# Install Rust. Interactive shell script. Maybe there's a way to do it non-interactively?
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
