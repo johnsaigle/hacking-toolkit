@@ -6,7 +6,7 @@ apt update -y && apt upgrade -y
 # THe following packages allow apt to communicate over HTTPS
 apt install apt-transport-https ca-certificates curl gnupg2 software-properties-common -y
 # Get software
-apt install curl git sudo zip exiftool tmux python3-pip vim zsh -y
+apt install curl git nmap sudo zip exiftool tmux python3-pip vim whois zsh -y
 
 # Add docker files to apt repository
 # https://www.linuxshelltips.com/install-docker-in-debian/
@@ -38,6 +38,7 @@ EOF
 source ~/.profile
 
 # Install go tools
+# TODO: add `anew`
 go get -v github.com/OWASP/Amass/v3/...
 go install github.com/ffuf/ffuf@latest
 go install github.com/tomnomnom/meg@latest
