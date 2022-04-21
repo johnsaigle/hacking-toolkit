@@ -84,3 +84,6 @@ EOF
 
 # Install Rust. Interactive shell script. Maybe there's a way to do it non-interactively?
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+# Cleanup
+apt autoremove
