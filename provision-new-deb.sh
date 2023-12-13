@@ -101,3 +101,13 @@ apt autoremove
 
 echo "Add the following key to GitHub:"
 cat $HOME/.ssh/github.pub
+
+# ==== TODO
+# - Split this into a desktop and server install
+# - For desktop, install:
+# - brave
+# - alacritty
+# - disable firefox options: pocket, speeddial features, etc.
+# - enable ublock origin in firefox
+# - set keyboard options
+# - 
