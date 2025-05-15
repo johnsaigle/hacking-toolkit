@@ -14,6 +14,7 @@ else
 	DATE=$(date  -v+1d +%Y-%m-%d-%a)
 fi
 
+mkdir -p "$HOME/scrap/"
 FILE="$HOME/scrap/todo-$DATE.md"
 
 if [ -f "$FILE" ]; then
