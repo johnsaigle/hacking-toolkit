@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+# Tomorrow's TODOs
+
+# Tomorrow, filename
+# ~/scrap/todo-2024-01-30-Tue.md
+DAY=$(date +%a)
+
+# Check whether it's Friday. If so, make the new note for Monday rather than tomorrow
+if [ "Fri" == "$DAY" ]; then
+	TITLE=$(date -v+3d "+%a %Y-%m-%d")
+	DATE=$(date  -v+3d +%Y-%m-%d-%a)
+else
+	TITLE=$(date -v+1d "+%a %Y-%m-%d")
+	DATE=$(date  -v+1d +%Y-%m-%d-%a)
+fi
+
+FILE="$HOME/scrap/todo-$DATE.md"
+
+if [ -f "$FILE" ]; then
+	echo "$FILE"
+	exit
+fi
+
+cat <<EOF > "$FILE"
+# $TITLE
+
+## Musts
+- 
+
+### Meetings
+-
+
+## Other
+- 
+
+## Done
+- 
+
+### Tasks
+
+EOF
+
+echo "$FILE"
