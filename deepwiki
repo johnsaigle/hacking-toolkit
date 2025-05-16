@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+
+TARGET=${1:-.}
+
+URL=$(echo "$TARGET" | rg '^http')
+
+REPO=""
+
+# If git directory parse the repo slug from the git remote
+if [[ -d $TARGET ]]; then
+    cd "$TARGET" || (echo "Can't cd to $TARGET" && exit)
+    # Lazy: grep for 'origin', then grab just the `author/repo` part.
+    # Regex: grabs a series of word characters up to a slash plus everything up to `.git`
+    REPO=$(git remote -v | rg origin | rg '(\w+/.*).git' -or '$1' | uniq)
+elif [[ -n $URL ]]; then
+    REPO=$(echo "$URL" | cut -d '/' -f 4,5)
+fi
+
+if [[ -z "$REPO" ]]; then
+    echo "Could not parse repo: argument is not a git directory or URL" && exit 1
+fi
+
+echo "https://deepwiki.com/${REPO}"
