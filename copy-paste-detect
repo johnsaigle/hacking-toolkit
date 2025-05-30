@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+if ! command -v lizard &> /dev/null; then
+    echo "Error: Lizard is not installed. Please install it from https://github.com/terryyin/lizard"
+    exit 1
+fi
+
+# TODO: This is Go-specific right now.
+lizard -l go -t 4 -Eduplicate -x"*_test.go" -x"*pb.go" -x"*proto" -x "*pb.gw.go"
